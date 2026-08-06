@@ -1,0 +1,322 @@
+workflows:
+  creative-music-nexus:
+    name: Creative Music Nexus
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.jameswilliams.creativemusic
+      vars:
+        XCODE_PROJECT: "CreativeMusicNexus.xcodeproj"
+        XCODE_SCHEME: "CreativeMusicNexus"
+        BUNDLE_ID: "com.jameswilliams.creativemusic"
+      xcode: 15.4
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Build and archive
+        script: |
+          cd ios-repo/apps/CreativeMusicNexus
+          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          xcode-project use-profiles
+          xcodebuild -project $XCODE_PROJECT \
+            -scheme $XCODE_SCHEME \
+            -sdk iphoneos \
+            -configuration Release \
+            -archivePath build/CreativeMusicNexus.xcarchive \
+            archive | xcpretty
+          xcodebuild -exportArchive \
+            -archivePath build/CreativeMusicNexus.xcarchive \
+            -exportOptionsPlist exportOptions.plist \
+            -exportPath build/
+    artifacts:
+      - ios-repo/apps/CreativeMusicNexus/build/*.ipa
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
+
+  crypto-mine-connect:
+    name: CryptoMine Connect
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.jameswilliams.cryptomineconnect
+      vars:
+        XCODE_PROJECT: "CryptoMineConnect.xcodeproj"
+        XCODE_SCHEME: "CryptoMineConnect"
+        BUNDLE_ID: "com.jameswilliams.cryptomineconnect"
+      xcode: 15.4
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Build and archive
+        script: |
+          cd ios-repo/apps/CryptoMineConnect
+          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          xcode-project use-profiles
+          xcodebuild -project $XCODE_PROJECT \
+            -scheme $XCODE_SCHEME \
+            -sdk iphoneos \
+            -configuration Release \
+            -archivePath build/CryptoMineConnect.xcarchive \
+            archive | xcpretty
+          xcodebuild -exportArchive \
+            -archivePath build/CryptoMineConnect.xcarchive \
+            -exportOptionsPlist exportOptions.plist \
+            -exportPath build/
+    artifacts:
+      - ios-repo/apps/CryptoMineConnect/build/*.ipa
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
+
+  apple-sentinel:
+    name: Apple Sentinel Security
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.jameswilliams.applesentinel
+      vars:
+        XCODE_PROJECT: "AppleSentinel.xcodeproj"
+        XCODE_SCHEME: "AppleSentinel"
+        BUNDLE_ID: "com.jameswilliams.applesentinel"
+      xcode: 15.4
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Build and archive
+        script: |
+          cd ios-repo/apps/AppleSentinel
+          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          xcode-project use-profiles
+          xcodebuild -project $XCODE_PROJECT \
+            -scheme $XCODE_SCHEME \
+            -sdk iphoneos \
+            -configuration Release \
+            -archivePath build/AppleSentinel.xcarchive \
+            archive | xcpretty
+          xcodebuild -exportArchive \
+            -archivePath build/AppleSentinel.xcarchive \
+            -exportOptionsPlist exportOptions.plist \
+            -exportPath build/
+    artifacts:
+      - ios-repo/apps/AppleSentinel/build/*.ipa
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
+
+  wealth-sage-ai:
+    name: WealthSage AI
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.jameswilliams.wealthsage
+      vars:
+        XCODE_PROJECT: "WealthSageAI.xcodeproj"
+        XCODE_SCHEME: "WealthSageAI"
+        BUNDLE_ID: "com.jameswilliams.wealthsage"
+      xcode: 15.4
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Build and archive
+        script: |
+          cd ios-repo/apps/WealthSageAI
+          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          xcode-project use-profiles
+          xcodebuild -project $XCODE_PROJECT \
+            -scheme $XCODE_SCHEME \
+            -sdk iphoneos \
+            -configuration Release \
+            -archivePath build/WealthSageAI.xcarchive \
+            archive | xcpretty
+          xcodebuild -exportArchive \
+            -archivePath build/WealthSageAI.xcarchive \
+            -exportOptionsPlist exportOptions.plist \
+            -exportPath build/
+    artifacts:
+      - ios-repo/apps/WealthSageAI/build/*.ipa
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
+
+  iotai-chip-market:
+    name: IOT AI Chip Market
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.jameswilliams.iotaichip
+      vars:
+        XCODE_PROJECT: "IOTAIChipMarket.xcodeproj"
+        XCODE_SCHEME: "IOTAIChipMarket"
+        BUNDLE_ID: "com.jameswilliams.iotaichip"
+      xcode: 15.4
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Build and archive
+        script: |
+          cd ios-repo/apps/IOTAIChipMarket
+          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          xcode-project use-profiles
+          xcodebuild -project $XCODE_PROJECT \
+            -scheme $XCODE_SCHEME \
+            -sdk iphoneos \
+            -configuration Release \
+            -archivePath build/IOTAIChipMarket.xcarchive \
+            archive | xcpretty
+          xcodebuild -exportArchive \
+            -archivePath build/IOTAIChipMarket.xcarchive \
+            -exportOptionsPlist exportOptions.plist \
+            -exportPath build/
+    artifacts:
+      - ios-repo/apps/IOTAIChipMarket/build/*.ipa
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
+
+  good-doctor-wellness:
+    name: GoodDoctor Wellness
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.jameswilliams.gooddoctor
+      vars:
+        XCODE_PROJECT: "GoodDoctorWellness.xcodeproj"
+        XCODE_SCHEME: "GoodDoctorWellness"
+        BUNDLE_ID: "com.jameswilliams.gooddoctor"
+      xcode: 15.4
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Build and archive
+        script: |
+          cd ios-repo/apps/GoodDoctorWellness
+          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          xcode-project use-profiles
+          xcodebuild -project $XCODE_PROJECT \
+            -scheme $XCODE_SCHEME \
+            -sdk iphoneos \
+            -configuration Release \
+            -archivePath build/GoodDoctorWellness.xcarchive \
+            archive | xcpretty
+          xcodebuild -exportArchive \
+            -archivePath build/GoodDoctorWellness.xcarchive \
+            -exportOptionsPlist exportOptions.plist \
+            -exportPath build/
+    artifacts:
+      - ios-repo/apps/GoodDoctorWellness/build/*.ipa
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
+
+  coin-bot-trade:
+    name: CoinBot Trade
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.jameswilliams.coinbottrade
+      vars:
+        XCODE_PROJECT: "CoinBotTrade.xcodeproj"
+        XCODE_SCHEME: "CoinBotTrade"
+        BUNDLE_ID: "com.jameswilliams.coinbottrade"
+      xcode: 15.4
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Build and archive
+        script: |
+          cd ios-repo/apps/CoinBotTrade
+          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          xcode-project use-profiles
+          xcodebuild -project $XCODE_PROJECT \
+            -scheme $XCODE_SCHEME \
+            -sdk iphoneos \
+            -configuration Release \
+            -archivePath build/CoinBotTrade.xcarchive \
+            archive | xcpretty
+          xcodebuild -exportArchive \
+            -archivePath build/CoinBotTrade.xcarchive \
+            -exportOptionsPlist exportOptions.plist \
+            -exportPath build/
+    artifacts:
+      - ios-repo/apps/CoinBotTrade/build/*.ipa
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
