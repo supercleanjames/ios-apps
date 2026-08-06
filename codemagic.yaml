@@ -7,6 +7,8 @@ workflows:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.jameswilliams.creativemusic
+      groups:
+        - appstore-credentials
       vars:
         XCODE_PROJECT: "CreativeMusicNexus.xcodeproj"
         XCODE_SCHEME: "CreativeMusicNexus"
@@ -23,7 +25,7 @@ workflows:
     scripts:
       - name: Build and archive
         script: |
-          cd ios-repo/apps/CreativeMusicNexus
+          cd apps/CreativeMusicNexus
           xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
           xcode-project use-profiles
           xcodebuild -project $XCODE_PROJECT \
@@ -37,7 +39,7 @@ workflows:
             -exportOptionsPlist exportOptions.plist \
             -exportPath build/
     artifacts:
-      - ios-repo/apps/CreativeMusicNexus/build/*.ipa
+      - apps/CreativeMusicNexus/build/*.ipa
     publishing:
       app_store_connect:
         api_key: $APP_STORE_CONNECT_PRIVATE_KEY
@@ -53,6 +55,8 @@ workflows:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.jameswilliams.cryptomineconnect
+      groups:
+        - appstore-credentials
       vars:
         XCODE_PROJECT: "CryptoMineConnect.xcodeproj"
         XCODE_SCHEME: "CryptoMineConnect"
@@ -69,7 +73,7 @@ workflows:
     scripts:
       - name: Build and archive
         script: |
-          cd ios-repo/apps/CryptoMineConnect
+          cd apps/CryptoMineConnect
           xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
           xcode-project use-profiles
           xcodebuild -project $XCODE_PROJECT \
@@ -83,7 +87,7 @@ workflows:
             -exportOptionsPlist exportOptions.plist \
             -exportPath build/
     artifacts:
-      - ios-repo/apps/CryptoMineConnect/build/*.ipa
+      - apps/CryptoMineConnect/build/*.ipa
     publishing:
       app_store_connect:
         api_key: $APP_STORE_CONNECT_PRIVATE_KEY
@@ -99,6 +103,8 @@ workflows:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.jameswilliams.applesentinel
+      groups:
+        - appstore-credentials
       vars:
         XCODE_PROJECT: "AppleSentinel.xcodeproj"
         XCODE_SCHEME: "AppleSentinel"
@@ -115,7 +121,7 @@ workflows:
     scripts:
       - name: Build and archive
         script: |
-          cd ios-repo/apps/AppleSentinel
+          cd apps/AppleSentinel
           xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
           xcode-project use-profiles
           xcodebuild -project $XCODE_PROJECT \
@@ -129,7 +135,7 @@ workflows:
             -exportOptionsPlist exportOptions.plist \
             -exportPath build/
     artifacts:
-      - ios-repo/apps/AppleSentinel/build/*.ipa
+      - apps/AppleSentinel/build/*.ipa
     publishing:
       app_store_connect:
         api_key: $APP_STORE_CONNECT_PRIVATE_KEY
@@ -145,6 +151,8 @@ workflows:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.jameswilliams.wealthsage
+      groups:
+        - appstore-credentials
       vars:
         XCODE_PROJECT: "WealthSageAI.xcodeproj"
         XCODE_SCHEME: "WealthSageAI"
@@ -161,7 +169,7 @@ workflows:
     scripts:
       - name: Build and archive
         script: |
-          cd ios-repo/apps/WealthSageAI
+          cd apps/WealthSageAI
           xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
           xcode-project use-profiles
           xcodebuild -project $XCODE_PROJECT \
@@ -175,7 +183,7 @@ workflows:
             -exportOptionsPlist exportOptions.plist \
             -exportPath build/
     artifacts:
-      - ios-repo/apps/WealthSageAI/build/*.ipa
+      - apps/WealthSageAI/build/*.ipa
     publishing:
       app_store_connect:
         api_key: $APP_STORE_CONNECT_PRIVATE_KEY
@@ -191,6 +199,8 @@ workflows:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.jameswilliams.iotaichip
+      groups:
+        - appstore-credentials
       vars:
         XCODE_PROJECT: "IOTAIChipMarket.xcodeproj"
         XCODE_SCHEME: "IOTAIChipMarket"
@@ -207,7 +217,7 @@ workflows:
     scripts:
       - name: Build and archive
         script: |
-          cd ios-repo/apps/IOTAIChipMarket
+          cd apps/IOTAIChipMarket
           xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
           xcode-project use-profiles
           xcodebuild -project $XCODE_PROJECT \
@@ -221,7 +231,7 @@ workflows:
             -exportOptionsPlist exportOptions.plist \
             -exportPath build/
     artifacts:
-      - ios-repo/apps/IOTAIChipMarket/build/*.ipa
+      - apps/IOTAIChipMarket/build/*.ipa
     publishing:
       app_store_connect:
         api_key: $APP_STORE_CONNECT_PRIVATE_KEY
@@ -237,6 +247,8 @@ workflows:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.jameswilliams.gooddoctor
+      groups:
+        - appstore-credentials
       vars:
         XCODE_PROJECT: "GoodDoctorWellness.xcodeproj"
         XCODE_SCHEME: "GoodDoctorWellness"
@@ -253,7 +265,7 @@ workflows:
     scripts:
       - name: Build and archive
         script: |
-          cd ios-repo/apps/GoodDoctorWellness
+          cd apps/GoodDoctorWellness
           xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
           xcode-project use-profiles
           xcodebuild -project $XCODE_PROJECT \
@@ -267,7 +279,7 @@ workflows:
             -exportOptionsPlist exportOptions.plist \
             -exportPath build/
     artifacts:
-      - ios-repo/apps/GoodDoctorWellness/build/*.ipa
+      - apps/GoodDoctorWellness/build/*.ipa
     publishing:
       app_store_connect:
         api_key: $APP_STORE_CONNECT_PRIVATE_KEY
@@ -283,6 +295,8 @@ workflows:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.jameswilliams.coinbottrade
+      groups:
+        - appstore-credentials
       vars:
         XCODE_PROJECT: "CoinBotTrade.xcodeproj"
         XCODE_SCHEME: "CoinBotTrade"
@@ -299,7 +313,7 @@ workflows:
     scripts:
       - name: Build and archive
         script: |
-          cd ios-repo/apps/CoinBotTrade
+          cd apps/CoinBotTrade
           xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
           xcode-project use-profiles
           xcodebuild -project $XCODE_PROJECT \
@@ -313,7 +327,7 @@ workflows:
             -exportOptionsPlist exportOptions.plist \
             -exportPath build/
     artifacts:
-      - ios-repo/apps/CoinBotTrade/build/*.ipa
+      - apps/CoinBotTrade/build/*.ipa
     publishing:
       app_store_connect:
         api_key: $APP_STORE_CONNECT_PRIVATE_KEY
