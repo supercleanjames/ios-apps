@@ -10,7 +10,7 @@ workflows:
         XCODE_PROJECT: "CreativeMusicNexus.xcodeproj"
         XCODE_SCHEME: "CreativeMusicNexus"
         BUNDLE_ID: "com.jameswilliams.creativemusic"
-      xcode: 15.4
+      xcode: latest
       cocoapods: default
     triggering:
       events:
@@ -55,7 +55,7 @@ workflows:
         XCODE_PROJECT: "CryptoMineConnect.xcodeproj"
         XCODE_SCHEME: "CryptoMineConnect"
         BUNDLE_ID: "com.jameswilliams.cryptomineconnect"
-      xcode: 15.4
+      xcode: latest
       cocoapods: default
     triggering:
       events:
@@ -100,7 +100,7 @@ workflows:
         XCODE_PROJECT: "AppleSentinel.xcodeproj"
         XCODE_SCHEME: "AppleSentinel"
         BUNDLE_ID: "com.jameswilliams.applesentinel"
-      xcode: 15.4
+      xcode: latest
       cocoapods: default
     triggering:
       events:
@@ -145,7 +145,7 @@ workflows:
         XCODE_PROJECT: "WealthSageAI.xcodeproj"
         XCODE_SCHEME: "WealthSageAI"
         BUNDLE_ID: "com.jameswilliams.wealthsage"
-      xcode: 15.4
+      xcode: latest
       cocoapods: default
     triggering:
       events:
@@ -190,7 +190,7 @@ workflows:
         XCODE_PROJECT: "IOTAIChipMarket.xcodeproj"
         XCODE_SCHEME: "IOTAIChipMarket"
         BUNDLE_ID: "com.jameswilliams.iotaichip"
-      xcode: 15.4
+      xcode: latest
       cocoapods: default
     triggering:
       events:
@@ -235,7 +235,7 @@ workflows:
         XCODE_PROJECT: "GoodDoctorWellness.xcodeproj"
         XCODE_SCHEME: "GoodDoctorWellness"
         BUNDLE_ID: "com.jameswilliams.gooddoctor"
-      xcode: 15.4
+      xcode: latest
       cocoapods: default
     triggering:
       events:
@@ -280,7 +280,7 @@ workflows:
         XCODE_PROJECT: "CoinBotTrade.xcodeproj"
         XCODE_SCHEME: "CoinBotTrade"
         BUNDLE_ID: "com.jameswilliams.coinbottrade"
-      xcode: 15.4
+      xcode: latest
       cocoapods: default
     triggering:
       events:
