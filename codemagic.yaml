@@ -4,9 +4,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.creativemusic
       groups:
         - appstore-credentials
       vars:
@@ -52,9 +49,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.cryptomineconnect
       groups:
         - appstore-credentials
       vars:
@@ -100,9 +94,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.applesentinel
       groups:
         - appstore-credentials
       vars:
@@ -148,9 +139,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.wealthsage
       groups:
         - appstore-credentials
       vars:
@@ -196,9 +184,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.iotaichip
       groups:
         - appstore-credentials
       vars:
@@ -244,9 +229,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.gooddoctor
       groups:
         - appstore-credentials
       vars:
@@ -292,9 +274,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.coinbottrade
       groups:
         - appstore-credentials
       vars:
