@@ -28,10 +28,10 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
-          xcode-project use-profiles
       - name: Build IPA
         script: |
           cd ios-repo/apps/CreativeMusicNexus
+          xcode-project use-profiles
           xcode-project build-ipa \
             --project "$XCODE_PROJECT" \
             --scheme "$XCODE_SCHEME"
@@ -73,10 +73,10 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
-          xcode-project use-profiles
       - name: Build IPA
         script: |
           cd ios-repo/apps/CryptoMineConnect
+          xcode-project use-profiles
           xcode-project build-ipa \
             --project "$XCODE_PROJECT" \
             --scheme "$XCODE_SCHEME"
@@ -118,10 +118,10 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
-          xcode-project use-profiles
       - name: Build IPA
         script: |
           cd ios-repo/apps/AppleSentinel
+          xcode-project use-profiles
           xcode-project build-ipa \
             --project "$XCODE_PROJECT" \
             --scheme "$XCODE_SCHEME"
@@ -163,10 +163,10 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
-          xcode-project use-profiles
       - name: Build IPA
         script: |
           cd ios-repo/apps/WealthSageAI
+          xcode-project use-profiles
           xcode-project build-ipa \
             --project "$XCODE_PROJECT" \
             --scheme "$XCODE_SCHEME"
@@ -208,10 +208,10 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
-          xcode-project use-profiles
       - name: Build IPA
         script: |
           cd ios-repo/apps/IOTAIChipMarket
+          xcode-project use-profiles
           xcode-project build-ipa \
             --project "$XCODE_PROJECT" \
             --scheme "$XCODE_SCHEME"
@@ -253,10 +253,10 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
-          xcode-project use-profiles
       - name: Build IPA
         script: |
           cd ios-repo/apps/GoodDoctorWellness
+          xcode-project use-profiles
           xcode-project build-ipa \
             --project "$XCODE_PROJECT" \
             --scheme "$XCODE_SCHEME"
@@ -298,10 +298,10 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
-          xcode-project use-profiles
       - name: Build IPA
         script: |
           cd ios-repo/apps/CoinBotTrade
+          xcode-project use-profiles
           xcode-project build-ipa \
             --project "$XCODE_PROJECT" \
             --scheme "$XCODE_SCHEME"
