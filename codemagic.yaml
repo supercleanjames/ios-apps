@@ -23,23 +23,23 @@ workflows:
           include: true
           source: true
     scripts:
-      - name: Build and archive
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
         script: |
-          cd apps/CreativeMusicNexus
-          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
           xcode-project use-profiles
-          xcodebuild -project $XCODE_PROJECT \
-            -scheme $XCODE_SCHEME \
-            -sdk iphoneos \
-            -configuration Release \
-            -archivePath build/CreativeMusicNexus.xcarchive \
-            archive | xcpretty
-          xcodebuild -exportArchive \
-            -archivePath build/CreativeMusicNexus.xcarchive \
-            -exportOptionsPlist exportOptions.plist \
-            -exportPath build/
+      - name: Build IPA
+        script: |
+          cd ios-repo/apps/CreativeMusicNexus
+          xcode-project build-ipa \
+            --project "$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME"
     artifacts:
-      - apps/CreativeMusicNexus/build/*.ipa
+      - ios-repo/apps/CreativeMusicNexus/build/ios/ipa/*.ipa
     publishing:
       app_store_connect:
         api_key: $APP_STORE_CONNECT_PRIVATE_KEY
@@ -71,23 +71,23 @@ workflows:
           include: true
           source: true
     scripts:
-      - name: Build and archive
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
         script: |
-          cd apps/CryptoMineConnect
-          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
           xcode-project use-profiles
-          xcodebuild -project $XCODE_PROJECT \
-            -scheme $XCODE_SCHEME \
-            -sdk iphoneos \
-            -configuration Release \
-            -archivePath build/CryptoMineConnect.xcarchive \
-            archive | xcpretty
-          xcodebuild -exportArchive \
-            -archivePath build/CryptoMineConnect.xcarchive \
-            -exportOptionsPlist exportOptions.plist \
-            -exportPath build/
+      - name: Build IPA
+        script: |
+          cd ios-repo/apps/CryptoMineConnect
+          xcode-project build-ipa \
+            --project "$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME"
     artifacts:
-      - apps/CryptoMineConnect/build/*.ipa
+      - ios-repo/apps/CryptoMineConnect/build/ios/ipa/*.ipa
     publishing:
       app_store_connect:
         api_key: $APP_STORE_CONNECT_PRIVATE_KEY
@@ -119,23 +119,23 @@ workflows:
           include: true
           source: true
     scripts:
-      - name: Build and archive
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
         script: |
-          cd apps/AppleSentinel
-          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
           xcode-project use-profiles
-          xcodebuild -project $XCODE_PROJECT \
-            -scheme $XCODE_SCHEME \
-            -sdk iphoneos \
-            -configuration Release \
-            -archivePath build/AppleSentinel.xcarchive \
-            archive | xcpretty
-          xcodebuild -exportArchive \
-            -archivePath build/AppleSentinel.xcarchive \
-            -exportOptionsPlist exportOptions.plist \
-            -exportPath build/
+      - name: Build IPA
+        script: |
+          cd ios-repo/apps/AppleSentinel
+          xcode-project build-ipa \
+            --project "$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME"
     artifacts:
-      - apps/AppleSentinel/build/*.ipa
+      - ios-repo/apps/AppleSentinel/build/ios/ipa/*.ipa
     publishing:
       app_store_connect:
         api_key: $APP_STORE_CONNECT_PRIVATE_KEY
@@ -167,23 +167,23 @@ workflows:
           include: true
           source: true
     scripts:
-      - name: Build and archive
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
         script: |
-          cd apps/WealthSageAI
-          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
           xcode-project use-profiles
-          xcodebuild -project $XCODE_PROJECT \
-            -scheme $XCODE_SCHEME \
-            -sdk iphoneos \
-            -configuration Release \
-            -archivePath build/WealthSageAI.xcarchive \
-            archive | xcpretty
-          xcodebuild -exportArchive \
-            -archivePath build/WealthSageAI.xcarchive \
-            -exportOptionsPlist exportOptions.plist \
-            -exportPath build/
+      - name: Build IPA
+        script: |
+          cd ios-repo/apps/WealthSageAI
+          xcode-project build-ipa \
+            --project "$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME"
     artifacts:
-      - apps/WealthSageAI/build/*.ipa
+      - ios-repo/apps/WealthSageAI/build/ios/ipa/*.ipa
     publishing:
       app_store_connect:
         api_key: $APP_STORE_CONNECT_PRIVATE_KEY
@@ -215,23 +215,23 @@ workflows:
           include: true
           source: true
     scripts:
-      - name: Build and archive
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
         script: |
-          cd apps/IOTAIChipMarket
-          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
           xcode-project use-profiles
-          xcodebuild -project $XCODE_PROJECT \
-            -scheme $XCODE_SCHEME \
-            -sdk iphoneos \
-            -configuration Release \
-            -archivePath build/IOTAIChipMarket.xcarchive \
-            archive | xcpretty
-          xcodebuild -exportArchive \
-            -archivePath build/IOTAIChipMarket.xcarchive \
-            -exportOptionsPlist exportOptions.plist \
-            -exportPath build/
+      - name: Build IPA
+        script: |
+          cd ios-repo/apps/IOTAIChipMarket
+          xcode-project build-ipa \
+            --project "$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME"
     artifacts:
-      - apps/IOTAIChipMarket/build/*.ipa
+      - ios-repo/apps/IOTAIChipMarket/build/ios/ipa/*.ipa
     publishing:
       app_store_connect:
         api_key: $APP_STORE_CONNECT_PRIVATE_KEY
@@ -263,23 +263,23 @@ workflows:
           include: true
           source: true
     scripts:
-      - name: Build and archive
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
         script: |
-          cd apps/GoodDoctorWellness
-          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
           xcode-project use-profiles
-          xcodebuild -project $XCODE_PROJECT \
-            -scheme $XCODE_SCHEME \
-            -sdk iphoneos \
-            -configuration Release \
-            -archivePath build/GoodDoctorWellness.xcarchive \
-            archive | xcpretty
-          xcodebuild -exportArchive \
-            -archivePath build/GoodDoctorWellness.xcarchive \
-            -exportOptionsPlist exportOptions.plist \
-            -exportPath build/
+      - name: Build IPA
+        script: |
+          cd ios-repo/apps/GoodDoctorWellness
+          xcode-project build-ipa \
+            --project "$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME"
     artifacts:
-      - apps/GoodDoctorWellness/build/*.ipa
+      - ios-repo/apps/GoodDoctorWellness/build/ios/ipa/*.ipa
     publishing:
       app_store_connect:
         api_key: $APP_STORE_CONNECT_PRIVATE_KEY
@@ -311,23 +311,23 @@ workflows:
           include: true
           source: true
     scripts:
-      - name: Build and archive
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
         script: |
-          cd apps/CoinBotTrade
-          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
           xcode-project use-profiles
-          xcodebuild -project $XCODE_PROJECT \
-            -scheme $XCODE_SCHEME \
-            -sdk iphoneos \
-            -configuration Release \
-            -archivePath build/CoinBotTrade.xcarchive \
-            archive | xcpretty
-          xcodebuild -exportArchive \
-            -archivePath build/CoinBotTrade.xcarchive \
-            -exportOptionsPlist exportOptions.plist \
-            -exportPath build/
+      - name: Build IPA
+        script: |
+          cd ios-repo/apps/CoinBotTrade
+          xcode-project build-ipa \
+            --project "$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME"
     artifacts:
-      - apps/CoinBotTrade/build/*.ipa
+      - ios-repo/apps/CoinBotTrade/build/ios/ipa/*.ipa
     publishing:
       app_store_connect:
         api_key: $APP_STORE_CONNECT_PRIVATE_KEY
