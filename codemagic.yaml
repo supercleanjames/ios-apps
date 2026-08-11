@@ -4,9 +4,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.creativemusic
       groups:
         - appstore-credentials
       vars:
@@ -23,6 +20,14 @@ workflows:
           include: true
           source: true
     scripts:
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
       - name: Build IPA
         script: |
           cd ios-repo/apps/CreativeMusicNexus
@@ -44,9 +49,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.cryptomineconnect
       groups:
         - appstore-credentials
       vars:
@@ -63,6 +65,14 @@ workflows:
           include: true
           source: true
     scripts:
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
       - name: Build IPA
         script: |
           cd ios-repo/apps/CryptoMineConnect
@@ -84,9 +94,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.applesentinel
       groups:
         - appstore-credentials
       vars:
@@ -103,6 +110,14 @@ workflows:
           include: true
           source: true
     scripts:
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
       - name: Build IPA
         script: |
           cd ios-repo/apps/AppleSentinel
@@ -124,9 +139,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.wealthsage
       groups:
         - appstore-credentials
       vars:
@@ -143,6 +155,14 @@ workflows:
           include: true
           source: true
     scripts:
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
       - name: Build IPA
         script: |
           cd ios-repo/apps/WealthSageAI
@@ -164,9 +184,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.iotaichip
       groups:
         - appstore-credentials
       vars:
@@ -183,6 +200,14 @@ workflows:
           include: true
           source: true
     scripts:
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
       - name: Build IPA
         script: |
           cd ios-repo/apps/IOTAIChipMarket
@@ -204,9 +229,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.gooddoctor
       groups:
         - appstore-credentials
       vars:
@@ -223,6 +245,14 @@ workflows:
           include: true
           source: true
     scripts:
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
       - name: Build IPA
         script: |
           cd ios-repo/apps/GoodDoctorWellness
@@ -244,9 +274,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.coinbottrade
       groups:
         - appstore-credentials
       vars:
@@ -263,6 +290,14 @@ workflows:
           include: true
           source: true
     scripts:
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
       - name: Build IPA
         script: |
           cd ios-repo/apps/CoinBotTrade
@@ -284,9 +319,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.coinmint
       groups:
         - appstore-credentials
       vars:
@@ -303,6 +335,14 @@ workflows:
           include: true
           source: true
     scripts:
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
       - name: Build IPA
         script: |
           cd ios-repo/apps/CoinMintToken
@@ -324,9 +364,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.vehiclecatalog
       groups:
         - appstore-credentials
       vars:
@@ -343,6 +380,14 @@ workflows:
           include: true
           source: true
     scripts:
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
       - name: Build IPA
         script: |
           cd ios-repo/apps/VehicleCatalog
@@ -364,9 +409,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.foodbyte
       groups:
         - appstore-credentials
       vars:
@@ -383,6 +425,14 @@ workflows:
           include: true
           source: true
     scripts:
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
       - name: Build IPA
         script: |
           cd ios-repo/apps/FoodByteToken
@@ -404,9 +454,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.luxuryhomeplans
       groups:
         - appstore-credentials
       vars:
@@ -423,6 +470,14 @@ workflows:
           include: true
           source: true
     scripts:
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
       - name: Build IPA
         script: |
           cd ios-repo/apps/LuxuryHomePlans
@@ -444,9 +499,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.aquaculture
       groups:
         - appstore-credentials
       vars:
@@ -463,6 +515,14 @@ workflows:
           include: true
           source: true
     scripts:
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
       - name: Build IPA
         script: |
           cd ios-repo/apps/AquacultureBlueprints
@@ -484,9 +544,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.ipcoremarketplace
       groups:
         - appstore-credentials
       vars:
@@ -503,6 +560,14 @@ workflows:
           include: true
           source: true
     scripts:
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
       - name: Build IPA
         script: |
           cd ios-repo/apps/IPCoreMarketplace
@@ -524,9 +589,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.rocketforge
       groups:
         - appstore-credentials
       vars:
@@ -543,6 +605,14 @@ workflows:
           include: true
           source: true
     scripts:
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
       - name: Build IPA
         script: |
           cd ios-repo/apps/RocketForge
@@ -564,9 +634,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.carbonx
       groups:
         - appstore-credentials
       vars:
@@ -583,6 +650,14 @@ workflows:
           include: true
           source: true
     scripts:
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
       - name: Build IPA
         script: |
           cd ios-repo/apps/CarbonXToken
@@ -604,9 +679,6 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jameswilliams.serverforge
       groups:
         - appstore-credentials
       vars:
@@ -623,6 +695,14 @@ workflows:
           include: true
           source: true
     scripts:
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
       - name: Build IPA
         script: |
           cd ios-repo/apps/ServerForge
