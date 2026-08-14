@@ -7,27 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A1000001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001 /* AppDelegate.swift */; };
-		A1000002 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000002 /* SceneDelegate.swift */; };
-		A1000003 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000003 /* ViewController.swift */; };
-		A1000004 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2000004 /* Assets.xcassets */; };
-		A1000005 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2000005 /* LaunchScreen.storyboard */; };
-		A1000006 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2000006 /* Main.storyboard */; };
+		1D5654DF0E5743ECB01FB419 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FCA3EF0C3845FBA783240C /* AppDelegate.swift */; };
+		3A86A988579846B48E7882BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0852C8C045DB4DBCA17B0C39 /* SceneDelegate.swift */; };
+		C04655A6B4454F6891F9A7D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBF6F967D3F458EB005CF5F /* ViewController.swift */; };
+		2491E2D01D2D47E89DF5DCFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD91D3DC24C4128821425F3 /* Assets.xcassets */; };
+		58A4DC4E78CB4F0F8AEC313F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B04941590584316800653C1 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A2000000 /* CoinMintToken.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinMintToken.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A2000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A2000002 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A2000003 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A2000004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A2000005 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A2000006 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		A2000007 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE0AB6118E014D08A14D546B /* CoinMintToken.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinMintToken.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		91FCA3EF0C3845FBA783240C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0852C8C045DB4DBCA17B0C39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FFBF6F967D3F458EB005CF5F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0A94078ECA484218A9B614EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CD91D3DC24C4128821425F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0B04941590584316800653C1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A3000001 /* Frameworks */ = {
+		975CA66179CE4136AA571878 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,46 +35,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A4000001 = {
+		0AFD4993E621481BB53DC43B /* = */ = {
 			isa = PBXGroup;
 			children = (
-				A4000002 /* CoinMintToken */,
-				A4000003 /* Products */,
+				1C00641D7B514BA6B82BDAAF /* CoinMintToken */,
+				28A471763E534117AB5C41DE /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		A4000002 /* CoinMintToken */ = {
+		28A471763E534117AB5C41DE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A2000001 /* AppDelegate.swift */,
-				A2000002 /* SceneDelegate.swift */,
-				A2000003 /* ViewController.swift */,
-				A2000004 /* Assets.xcassets */,
-				A2000005 /* LaunchScreen.storyboard */,
-				A2000006 /* Main.storyboard */,
-				A2000007 /* Info.plist */,
-			);
-			path = CoinMintToken;
-			sourceTree = "<group>";
-		};
-		A4000003 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A2000000 /* CoinMintToken.app */,
+				AE0AB6118E014D08A14D546B /* CoinMintToken.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1C00641D7B514BA6B82BDAAF /* CoinMintToken */ = {
+			isa = PBXGroup;
+			children = (
+				91FCA3EF0C3845FBA783240C /* AppDelegate.swift */,
+				0852C8C045DB4DBCA17B0C39 /* SceneDelegate.swift */,
+				FFBF6F967D3F458EB005CF5F /* ViewController.swift */,
+				4CD91D3DC24C4128821425F3 /* Assets.xcassets */,
+				0B04941590584316800653C1 /* LaunchScreen.storyboard */,
+				0A94078ECA484218A9B614EC /* Info.plist */,
+			);
+			path = CoinMintToken;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A5000001 /* CoinMintToken */ = {
+		FB89E09DCEBC42079442105B /* CoinMintToken */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A6000001 /* Build configuration list for PBXNativeTarget "CoinMintToken" */;
+			buildConfigurationList = FB89E09DCEBC42079442105B_CONFIG_LIST /* Build configuration list for PBXNativeTarget "CoinMintToken" */;
 			buildPhases = (
-				A7000001 /* Sources */,
-				A3000001 /* Frameworks */,
-				A7000002 /* Resources */,
+				7D1CD7889ED64CDBA667F1E5 /* Sources */,
+				975CA66179CE4136AA571878 /* Frameworks */,
+				BD6F22E3EF63400292E34122 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -84,25 +81,25 @@
 			);
 			name = CoinMintToken;
 			productName = CoinMintToken;
-			productReference = A2000000 /* CoinMintToken.app */;
+			productReference = AE0AB6118E014D08A14D546B /* CoinMintToken.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A8000001 /* Project object */ = {
+		A732B2896BF54447928CE840 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					A5000001 = {
+					FB89E09DCEBC42079442105B = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = A6000002 /* Build configuration list for PBXProject "CoinMintToken" */;
+			buildConfigurationList = A732B2896BF54447928CE840_CONFIG_LIST /* Build configuration list for PBXProject "CoinMintToken" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,44 +107,43 @@
 				en,
 				Base,
 			);
-			mainGroup = A4000001;
-			productRefGroup = A4000003 /* Products */;
+			mainGroup = 0AFD4993E621481BB53DC43B;
+			productRefGroup = 28A471763E534117AB5C41DE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A5000001 /* CoinMintToken */,
+				FB89E09DCEBC42079442105B /* CoinMintToken */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A7000002 /* Resources */ = {
+		BD6F22E3EF63400292E34122 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1000004 /* Assets.xcassets in Resources */,
-				A1000005 /* LaunchScreen.storyboard in Resources */,
-				A1000006 /* Main.storyboard in Resources */,
+				58A4DC4E78CB4F0F8AEC313F /* LaunchScreen.storyboard in Resources */,
+				2491E2D01D2D47E89DF5DCFC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A7000001 /* Sources */ = {
+		7D1CD7889ED64CDBA667F1E5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1000001 /* AppDelegate.swift in Sources */,
-				A1000002 /* SceneDelegate.swift in Sources */,
-				A1000003 /* ViewController.swift in Sources */,
+				3A86A988579846B48E7882BE /* SceneDelegate.swift in Sources */,
+				1D5654DF0E5743ECB01FB419 /* AppDelegate.swift in Sources */,
+				C04655A6B4454F6891F9A7D9 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		A9000001 /* Debug */ = {
+		349916655BEB455A9ACB47CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -163,7 +159,8 @@
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_IVAR_ACCESS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
@@ -176,11 +173,10 @@
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNINITIALIZED = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_NAMES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -210,7 +206,7 @@
 			};
 			name = Debug;
 		};
-		A9000002 /* Release */ = {
+		0D89FAC7ADBE4DE0B8E9A176 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -226,7 +222,8 @@
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_IVAR_ACCESS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
@@ -239,11 +236,12 @@
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNINITIALIZED = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_NAMES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -258,28 +256,27 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		A9000003 /* Debug */ = {
+		D53FB8D3C536475392BC6B11 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "";
-				ENABLE_PREVIEWS = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = CoinMintToken/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.james.coinminttoken;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jameswilliams.coinmint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -287,23 +284,21 @@
 			};
 			name = Debug;
 		};
-		A9000004 /* Release */ = {
+		F902333A2B9040B4B6D727DE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "";
-				ENABLE_PREVIEWS = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = CoinMintToken/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.james.coinminttoken;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jameswilliams.coinmint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -314,25 +309,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A6000001 /* Build configuration list for PBXNativeTarget "CoinMintToken" */ = {
+		A732B2896BF54447928CE840_CONFIG_LIST /* Build configuration list for PBXProject "CoinMintToken" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A9000003 /* Debug */,
-				A9000004 /* Release */,
+				349916655BEB455A9ACB47CB /* Debug */,
+				0D89FAC7ADBE4DE0B8E9A176 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A6000002 /* Build configuration list for PBXProject "CoinMintToken" */ = {
+		FB89E09DCEBC42079442105B_CONFIG_LIST /* Build configuration list for PBXNativeTarget "CoinMintToken" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A9000001 /* Debug */,
-				A9000002 /* Release */,
+				D53FB8D3C536475392BC6B11 /* Debug */,
+				F902333A2B9040B4B6D727DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A8000001 /* Project object */;
+	rootObject = A732B2896BF54447928CE840 /* Project object */;
 }

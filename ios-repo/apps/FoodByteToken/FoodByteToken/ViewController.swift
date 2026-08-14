@@ -3,12 +3,16 @@ import WebKit
 
 class ViewController: UIViewController, WKNavigationDelegate {
     var webView: WKWebView!
-    var activityIndicator: UIActivityIndicatorView!
+    var spinner: UIActivityIndicatorView!
+    var retryButton: UIButton!
+    let targetURL = "https://fast-food-coin.replit.app"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupWebView()
-        loadURL()
+        setupSpinner()
+        setupRetryButton()
+        loadSite()
     }
 
     func setupWebView() {
@@ -17,35 +21,45 @@ class ViewController: UIViewController, WKNavigationDelegate {
         webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         webView.navigationDelegate = self
         view.addSubview(webView)
-
-        activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.center = view.center
-        activityIndicator.hidesWhenStopped = true
-        view.addSubview(activityIndicator)
     }
 
-    func loadURL() {
-        guard let url = URL(string: "https://fast-food-coin.replit.app") else { return }
-        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 30)
-        webView.load(request)
-        activityIndicator.startAnimating()
+    func setupSpinner() {
+        spinner = UIActivityIndicatorView(style: .large)
+        spinner.center = view.center
+        spinner.hidesWhenStopped = true
+        view.addSubview(spinner)
     }
+
+    func setupRetryButton() {
+        retryButton = UIButton(type: .system)
+        retryButton.setTitle("Retry", for: .normal)
+        retryButton.frame = CGRect(x: view.center.x - 50, y: view.center.y + 40, width: 100, height: 44)
+        retryButton.isHidden = true
+        retryButton.addTarget(self, action: #selector(retryLoad), for: .touchUpInside)
+        view.addSubview(retryButton)
+    }
+
+    func loadSite() {
+        guard let url = URL(string: targetURL) else { return }
+        spinner.startAnimating()
+        retryButton.isHidden = true
+        webView.load(URLRequest(url: url))
+    }
+
+    @objc func retryLoad() { loadSite() }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        activityIndicator.stopAnimating()
+        spinner.stopAnimating()
+        retryButton.isHidden = true
     }
 
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        activityIndicator.stopAnimating()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
-            self?.loadURL()
-        }
+        spinner.stopAnimating()
+        retryButton.isHidden = false
     }
 
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        activityIndicator.stopAnimating()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
-            self?.loadURL()
-        }
+        spinner.stopAnimating()
+        retryButton.isHidden = false
     }
 }

@@ -5,7 +5,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     var webView: WKWebView!
     var spinner: UIActivityIndicatorView!
     var retryButton: UIButton!
-    let appURL = "https://crypto-mine-connect--supercleanjames.replit.app"
+    let appURL = "https://cryptomineconnect.live"
 
     override func loadView() {
         let config = WKWebViewConfiguration()

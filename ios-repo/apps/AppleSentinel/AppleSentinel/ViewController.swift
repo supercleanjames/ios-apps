@@ -5,7 +5,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     var webView: WKWebView!
     var spinner: UIActivityIndicatorView!
     var retryButton: UIButton!
-    let appURL = "https://apple-sentinel--supercleanjames.replit.app"
+    let appURL = "https://applesentinel.com"
 
     override func loadView() {
         let config = WKWebViewConfiguration()
