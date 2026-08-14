@@ -320,3 +320,417 @@ workflows:
         key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
         issuer_id: $APP_STORE_CONNECT_ISSUER_ID
         submit_to_testflight: true
+
+  coin-mint-token:
+    name: CoinMint Token
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.jameswilliams.coinminttoken
+      vars:
+        XCODE_PROJECT: "CoinMintToken.xcodeproj"
+        XCODE_SCHEME: "CoinMintToken"
+        BUNDLE_ID: "com.jameswilliams.coinminttoken"
+      xcode: 15.4
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Build and archive
+        script: |
+          cd apps/CoinMintToken
+          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          xcode-project use-profiles
+          xcodebuild -project $XCODE_PROJECT \
+            -scheme $XCODE_SCHEME \
+            -sdk iphoneos \
+            -configuration Release \
+            -archivePath build/CoinMintToken.xcarchive \
+            archive | xcpretty
+          xcodebuild -exportArchive \
+            -archivePath build/CoinMintToken.xcarchive \
+            -exportOptionsPlist exportOptions.plist \
+            -exportPath build/
+    artifacts:
+      - apps/CoinMintToken/build/*.ipa
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
+
+  vehicle-catalog:
+    name: Vehicle Catalog
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.jameswilliams.vehiclecatalog
+      vars:
+        XCODE_PROJECT: "VehicleCatalog.xcodeproj"
+        XCODE_SCHEME: "VehicleCatalog"
+        BUNDLE_ID: "com.jameswilliams.vehiclecatalog"
+      xcode: 15.4
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Build and archive
+        script: |
+          cd apps/VehicleCatalog
+          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          xcode-project use-profiles
+          xcodebuild -project $XCODE_PROJECT \
+            -scheme $XCODE_SCHEME \
+            -sdk iphoneos \
+            -configuration Release \
+            -archivePath build/VehicleCatalog.xcarchive \
+            archive | xcpretty
+          xcodebuild -exportArchive \
+            -archivePath build/VehicleCatalog.xcarchive \
+            -exportOptionsPlist exportOptions.plist \
+            -exportPath build/
+    artifacts:
+      - apps/VehicleCatalog/build/*.ipa
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
+
+  food-byte-token:
+    name: FoodByte Token
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.jameswilliams.foodbytetoken
+      vars:
+        XCODE_PROJECT: "FoodByteToken.xcodeproj"
+        XCODE_SCHEME: "FoodByteToken"
+        BUNDLE_ID: "com.jameswilliams.foodbytetoken"
+      xcode: 15.4
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Build and archive
+        script: |
+          cd apps/FoodByteToken
+          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          xcode-project use-profiles
+          xcodebuild -project $XCODE_PROJECT \
+            -scheme $XCODE_SCHEME \
+            -sdk iphoneos \
+            -configuration Release \
+            -archivePath build/FoodByteToken.xcarchive \
+            archive | xcpretty
+          xcodebuild -exportArchive \
+            -archivePath build/FoodByteToken.xcarchive \
+            -exportOptionsPlist exportOptions.plist \
+            -exportPath build/
+    artifacts:
+      - apps/FoodByteToken/build/*.ipa
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
+
+  luxury-home-plans:
+    name: Luxury Home Plans
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.jameswilliams.luxuryhomeplans
+      vars:
+        XCODE_PROJECT: "LuxuryHomePlans.xcodeproj"
+        XCODE_SCHEME: "LuxuryHomePlans"
+        BUNDLE_ID: "com.jameswilliams.luxuryhomeplans"
+      xcode: 15.4
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Build and archive
+        script: |
+          cd apps/LuxuryHomePlans
+          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          xcode-project use-profiles
+          xcodebuild -project $XCODE_PROJECT \
+            -scheme $XCODE_SCHEME \
+            -sdk iphoneos \
+            -configuration Release \
+            -archivePath build/LuxuryHomePlans.xcarchive \
+            archive | xcpretty
+          xcodebuild -exportArchive \
+            -archivePath build/LuxuryHomePlans.xcarchive \
+            -exportOptionsPlist exportOptions.plist \
+            -exportPath build/
+    artifacts:
+      - apps/LuxuryHomePlans/build/*.ipa
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
+
+  aquaculture-blueprints:
+    name: Aquaculture Blueprints
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.jameswilliams.aquacultureblueprints
+      vars:
+        XCODE_PROJECT: "AquacultureBlueprints.xcodeproj"
+        XCODE_SCHEME: "AquacultureBlueprints"
+        BUNDLE_ID: "com.jameswilliams.aquacultureblueprints"
+      xcode: 15.4
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Build and archive
+        script: |
+          cd apps/AquacultureBlueprints
+          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          xcode-project use-profiles
+          xcodebuild -project $XCODE_PROJECT \
+            -scheme $XCODE_SCHEME \
+            -sdk iphoneos \
+            -configuration Release \
+            -archivePath build/AquacultureBlueprints.xcarchive \
+            archive | xcpretty
+          xcodebuild -exportArchive \
+            -archivePath build/AquacultureBlueprints.xcarchive \
+            -exportOptionsPlist exportOptions.plist \
+            -exportPath build/
+    artifacts:
+      - apps/AquacultureBlueprints/build/*.ipa
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
+
+  ip-core-marketplace:
+    name: IP Core Marketplace
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.jameswilliams.ipcoremarketplace
+      vars:
+        XCODE_PROJECT: "IPCoreMarketplace.xcodeproj"
+        XCODE_SCHEME: "IPCoreMarketplace"
+        BUNDLE_ID: "com.jameswilliams.ipcoremarketplace"
+      xcode: 15.4
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Build and archive
+        script: |
+          cd apps/IPCoreMarketplace
+          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          xcode-project use-profiles
+          xcodebuild -project $XCODE_PROJECT \
+            -scheme $XCODE_SCHEME \
+            -sdk iphoneos \
+            -configuration Release \
+            -archivePath build/IPCoreMarketplace.xcarchive \
+            archive | xcpretty
+          xcodebuild -exportArchive \
+            -archivePath build/IPCoreMarketplace.xcarchive \
+            -exportOptionsPlist exportOptions.plist \
+            -exportPath build/
+    artifacts:
+      - apps/IPCoreMarketplace/build/*.ipa
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
+
+  rocketforge:
+    name: RocketForge
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.jameswilliams.rocketforge
+      vars:
+        XCODE_PROJECT: "RocketForge.xcodeproj"
+        XCODE_SCHEME: "RocketForge"
+        BUNDLE_ID: "com.jameswilliams.rocketforge"
+      xcode: 15.4
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Build and archive
+        script: |
+          cd apps/RocketForge
+          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          xcode-project use-profiles
+          xcodebuild -project $XCODE_PROJECT \
+            -scheme $XCODE_SCHEME \
+            -sdk iphoneos \
+            -configuration Release \
+            -archivePath build/RocketForge.xcarchive \
+            archive | xcpretty
+          xcodebuild -exportArchive \
+            -archivePath build/RocketForge.xcarchive \
+            -exportOptionsPlist exportOptions.plist \
+            -exportPath build/
+    artifacts:
+      - apps/RocketForge/build/*.ipa
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
+
+  carbonx-token:
+    name: CarbonX Token
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.jameswilliams.carbonxtoken
+      vars:
+        XCODE_PROJECT: "CarbonXToken.xcodeproj"
+        XCODE_SCHEME: "CarbonXToken"
+        BUNDLE_ID: "com.jameswilliams.carbonxtoken"
+      xcode: 15.4
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Build and archive
+        script: |
+          cd apps/CarbonXToken
+          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          xcode-project use-profiles
+          xcodebuild -project $XCODE_PROJECT \
+            -scheme $XCODE_SCHEME \
+            -sdk iphoneos \
+            -configuration Release \
+            -archivePath build/CarbonXToken.xcarchive \
+            archive | xcpretty
+          xcodebuild -exportArchive \
+            -archivePath build/CarbonXToken.xcarchive \
+            -exportOptionsPlist exportOptions.plist \
+            -exportPath build/
+    artifacts:
+      - apps/CarbonXToken/build/*.ipa
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
+
+  serverforge:
+    name: ServerForge
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.jameswilliams.serverforge
+      vars:
+        XCODE_PROJECT: "ServerForge.xcodeproj"
+        XCODE_SCHEME: "ServerForge"
+        BUNDLE_ID: "com.jameswilliams.serverforge"
+      xcode: 15.4
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Build and archive
+        script: |
+          cd apps/ServerForge
+          xcode-build-number set $BUILD_NUMBER $XCODE_PROJECT $XCODE_SCHEME
+          xcode-project use-profiles
+          xcodebuild -project $XCODE_PROJECT \
+            -scheme $XCODE_SCHEME \
+            -sdk iphoneos \
+            -configuration Release \
+            -archivePath build/ServerForge.xcarchive \
+            archive | xcpretty
+          xcodebuild -exportArchive \
+            -archivePath build/ServerForge.xcarchive \
+            -exportOptionsPlist exportOptions.plist \
+            -exportPath build/
+    artifacts:
+      - apps/ServerForge/build/*.ipa
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
