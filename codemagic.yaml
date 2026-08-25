@@ -729,7 +729,7 @@ workflows:
       vars:
         XCODE_PROJECT: "BitcoinClubQuest.xcodeproj"
         XCODE_SCHEME: "BitcoinClubQuest"
-        BUNDLE_ID: "com.jameswilliams.bitcoinclubquest"
+        BUNDLE_ID: "com.jrwtech.bitcoinclubquest"
       xcode: latest
       cocoapods: default
     scripts:
