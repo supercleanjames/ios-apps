@@ -718,3 +718,46 @@ workflows:
         key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
         issuer_id: $APP_STORE_CONNECT_ISSUER_ID
         submit_to_testflight: true
+
+  bitcoin-club-quest:
+    name: Bitcoin Club Quest
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      groups:
+        - appstore-credentials
+      vars:
+        XCODE_PROJECT: "BitcoinClubQuest.xcodeproj"
+        XCODE_SCHEME: "BitcoinClubQuest"
+        BUNDLE_ID: "com.jameswilliams.bitcoinclubquest"
+      xcode: latest
+      cocoapods: default
+    scripts:
+      - name: Clone Bitcoin Club Quest repo
+        script: |
+          git clone https://github.com/supercleanjames/bitcoin-club-quest-ios.git bitcoin-club-quest
+      - name: Set up keychain
+        script: keychain initialize
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
+      - name: Build IPA
+        script: |
+          cd bitcoin-club-quest
+          xcode-project use-profiles
+          xcode-project build-ipa \
+            --project "$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME"
+    artifacts:
+      - bitcoin-club-quest/build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
+        submit_to_app_store: false
