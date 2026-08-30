@@ -516,7 +516,7 @@ workflows:
         - appstore-credentials
       ios_signing:
         provisioning_profiles:
-          - as_luxuryhomeplans
+          - lhp_v2
         certificates:
           - RoboLeague iOS Distribution
       vars:
