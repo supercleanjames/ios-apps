@@ -9,7 +9,8 @@ workflows:
       vars:
         XCODE_PROJECT: "CreativeMusicNexus.xcodeproj"
         XCODE_SCHEME: "CreativeMusicNexus"
-        BUNDLE_ID: "com.jameswilliams.creativemusic"
+        BUNDLE_ID: "com.jrwtech.creativemusicnexus"
+        APP_STORE_APPLE_ID: "6785688482"
       xcode: 26.4
       cocoapods: default
     scripts:
@@ -21,6 +22,19 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
+      - name: Set build number
+        script: |
+          cd ios-repo/apps/CreativeMusicNexus
+          TF=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          AS=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          MAX=0
+          for N in "$TF" "$AS"; do
+            case "$N" in ''|*[!0-9]*) N=0;; esac
+            [ "$N" -gt "$MAX" ] && MAX="$N"
+          done
+          NEXT=$((MAX + 1))
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $NEXT" CreativeMusicNexus/Info.plist
+          echo "Uploading build $NEXT"
       - name: Build IPA
         script: |
           cd ios-repo/apps/CreativeMusicNexus
@@ -47,7 +61,8 @@ workflows:
       vars:
         XCODE_PROJECT: "CryptoMineConnect.xcodeproj"
         XCODE_SCHEME: "CryptoMineConnect"
-        BUNDLE_ID: "com.jameswilliams.cryptomineconnect"
+        BUNDLE_ID: "com.jrwtech.cryptomineconnect"
+        APP_STORE_APPLE_ID: "6785705200"
       xcode: 26.4
       cocoapods: default
     scripts:
@@ -59,6 +74,19 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
+      - name: Set build number
+        script: |
+          cd ios-repo/apps/CryptoMineConnect
+          TF=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          AS=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          MAX=0
+          for N in "$TF" "$AS"; do
+            case "$N" in ''|*[!0-9]*) N=0;; esac
+            [ "$N" -gt "$MAX" ] && MAX="$N"
+          done
+          NEXT=$((MAX + 1))
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $NEXT" CryptoMineConnect/Info.plist
+          echo "Uploading build $NEXT"
       - name: Build IPA
         script: |
           cd ios-repo/apps/CryptoMineConnect
@@ -85,7 +113,8 @@ workflows:
       vars:
         XCODE_PROJECT: "AppleSentinel.xcodeproj"
         XCODE_SCHEME: "AppleSentinel"
-        BUNDLE_ID: "com.jameswilliams.applesentinel"
+        BUNDLE_ID: "com.jrwtech.applesentinel"
+        APP_STORE_APPLE_ID: "6785704308"
       xcode: 26.4
       cocoapods: default
     scripts:
@@ -97,6 +126,19 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
+      - name: Set build number
+        script: |
+          cd ios-repo/apps/AppleSentinel
+          TF=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          AS=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          MAX=0
+          for N in "$TF" "$AS"; do
+            case "$N" in ''|*[!0-9]*) N=0;; esac
+            [ "$N" -gt "$MAX" ] && MAX="$N"
+          done
+          NEXT=$((MAX + 1))
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $NEXT" AppleSentinel/Info.plist
+          echo "Uploading build $NEXT"
       - name: Build IPA
         script: |
           cd ios-repo/apps/AppleSentinel
@@ -123,7 +165,8 @@ workflows:
       vars:
         XCODE_PROJECT: "WealthSageAI.xcodeproj"
         XCODE_SCHEME: "WealthSageAI"
-        BUNDLE_ID: "com.jameswilliams.wealthsage"
+        BUNDLE_ID: "com.jrwtech.wealthsage"
+        APP_STORE_APPLE_ID: "6785688225"
       xcode: 26.4
       cocoapods: default
     scripts:
@@ -135,6 +178,19 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
+      - name: Set build number
+        script: |
+          cd ios-repo/apps/WealthSageAI
+          TF=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          AS=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          MAX=0
+          for N in "$TF" "$AS"; do
+            case "$N" in ''|*[!0-9]*) N=0;; esac
+            [ "$N" -gt "$MAX" ] && MAX="$N"
+          done
+          NEXT=$((MAX + 1))
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $NEXT" WealthSageAI/Info.plist
+          echo "Uploading build $NEXT"
       - name: Build IPA
         script: |
           cd ios-repo/apps/WealthSageAI
@@ -161,7 +217,8 @@ workflows:
       vars:
         XCODE_PROJECT: "IOTAIChipMarket.xcodeproj"
         XCODE_SCHEME: "IOTAIChipMarket"
-        BUNDLE_ID: "com.jameswilliams.iotaichip"
+        BUNDLE_ID: "com.jrwtech.aichipmarket"
+        APP_STORE_APPLE_ID: "6785704945"
       xcode: 26.4
       cocoapods: default
     scripts:
@@ -173,6 +230,19 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
+      - name: Set build number
+        script: |
+          cd ios-repo/apps/IOTAIChipMarket
+          TF=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          AS=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          MAX=0
+          for N in "$TF" "$AS"; do
+            case "$N" in ''|*[!0-9]*) N=0;; esac
+            [ "$N" -gt "$MAX" ] && MAX="$N"
+          done
+          NEXT=$((MAX + 1))
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $NEXT" IOTAIChipMarket/Info.plist
+          echo "Uploading build $NEXT"
       - name: Build IPA
         script: |
           cd ios-repo/apps/IOTAIChipMarket
@@ -199,7 +269,8 @@ workflows:
       vars:
         XCODE_PROJECT: "GoodDoctorWellness.xcodeproj"
         XCODE_SCHEME: "GoodDoctorWellness"
-        BUNDLE_ID: "com.jameswilliams.gooddoctor"
+        BUNDLE_ID: "com.jrwtech.gooddoctorwellness"
+        APP_STORE_APPLE_ID: "6785705181"
       xcode: 26.4
       cocoapods: default
     scripts:
@@ -211,6 +282,19 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
+      - name: Set build number
+        script: |
+          cd ios-repo/apps/GoodDoctorWellness
+          TF=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          AS=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          MAX=0
+          for N in "$TF" "$AS"; do
+            case "$N" in ''|*[!0-9]*) N=0;; esac
+            [ "$N" -gt "$MAX" ] && MAX="$N"
+          done
+          NEXT=$((MAX + 1))
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $NEXT" GoodDoctorWellness/Info.plist
+          echo "Uploading build $NEXT"
       - name: Build IPA
         script: |
           cd ios-repo/apps/GoodDoctorWellness
@@ -237,7 +321,8 @@ workflows:
       vars:
         XCODE_PROJECT: "CoinBotTrade.xcodeproj"
         XCODE_SCHEME: "CoinBotTrade"
-        BUNDLE_ID: "com.jameswilliams.coinbottrade"
+        BUNDLE_ID: "com.jrwtech.coinbottrade"
+        APP_STORE_APPLE_ID: "6785700154"
       xcode: 26.4
       cocoapods: default
     scripts:
@@ -249,6 +334,19 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
+      - name: Set build number
+        script: |
+          cd ios-repo/apps/CoinBotTrade
+          TF=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          AS=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          MAX=0
+          for N in "$TF" "$AS"; do
+            case "$N" in ''|*[!0-9]*) N=0;; esac
+            [ "$N" -gt "$MAX" ] && MAX="$N"
+          done
+          NEXT=$((MAX + 1))
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $NEXT" CoinBotTrade/Info.plist
+          echo "Uploading build $NEXT"
       - name: Build IPA
         script: |
           cd ios-repo/apps/CoinBotTrade
@@ -275,7 +373,8 @@ workflows:
       vars:
         XCODE_PROJECT: "CoinMintToken.xcodeproj"
         XCODE_SCHEME: "CoinMintToken"
-        BUNDLE_ID: "com.jameswilliams.coinmint"
+        BUNDLE_ID: "com.jrwtech.coinmint"
+        APP_STORE_APPLE_ID: "6785716202"
       xcode: 26.4
       cocoapods: default
     scripts:
@@ -287,6 +386,19 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
+      - name: Set build number
+        script: |
+          cd ios-repo/apps/CoinMintToken
+          TF=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          AS=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          MAX=0
+          for N in "$TF" "$AS"; do
+            case "$N" in ''|*[!0-9]*) N=0;; esac
+            [ "$N" -gt "$MAX" ] && MAX="$N"
+          done
+          NEXT=$((MAX + 1))
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $NEXT" CoinMintToken/Info.plist
+          echo "Uploading build $NEXT"
       - name: Build IPA
         script: |
           cd ios-repo/apps/CoinMintToken
@@ -351,7 +463,8 @@ workflows:
       vars:
         XCODE_PROJECT: "FoodByteToken.xcodeproj"
         XCODE_SCHEME: "FoodByteToken"
-        BUNDLE_ID: "com.jameswilliams.foodbyte"
+        BUNDLE_ID: "com.jrwtech.foodbytetoken"
+        APP_STORE_APPLE_ID: "6785705358"
       xcode: 26.4
       cocoapods: default
     scripts:
@@ -363,6 +476,19 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
+      - name: Set build number
+        script: |
+          cd ios-repo/apps/FoodByteToken
+          TF=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          AS=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          MAX=0
+          for N in "$TF" "$AS"; do
+            case "$N" in ''|*[!0-9]*) N=0;; esac
+            [ "$N" -gt "$MAX" ] && MAX="$N"
+          done
+          NEXT=$((MAX + 1))
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $NEXT" FoodByteToken/Info.plist
+          echo "Uploading build $NEXT"
       - name: Build IPA
         script: |
           cd ios-repo/apps/FoodByteToken
@@ -393,13 +519,6 @@ workflows:
         APP_STORE_APPLE_ID: "6785681579"
       xcode: 26.4
       cocoapods: default
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: main
-          include: true
-          source: true
     scripts:
       - name: Set up keychain
         script: keychain initialize
@@ -448,7 +567,8 @@ workflows:
       vars:
         XCODE_PROJECT: "AquacultureBlueprints.xcodeproj"
         XCODE_SCHEME: "AquacultureBlueprints"
-        BUNDLE_ID: "com.jameswilliams.aquaculture"
+        BUNDLE_ID: "com.jrwtech.aquacultureblueprints"
+        APP_STORE_APPLE_ID: "6785705140"
       xcode: 26.4
       cocoapods: default
     scripts:
@@ -460,6 +580,19 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
+      - name: Set build number
+        script: |
+          cd ios-repo/apps/AquacultureBlueprints
+          TF=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          AS=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          MAX=0
+          for N in "$TF" "$AS"; do
+            case "$N" in ''|*[!0-9]*) N=0;; esac
+            [ "$N" -gt "$MAX" ] && MAX="$N"
+          done
+          NEXT=$((MAX + 1))
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $NEXT" AquacultureBlueprints/Info.plist
+          echo "Uploading build $NEXT"
       - name: Build IPA
         script: |
           cd ios-repo/apps/AquacultureBlueprints
@@ -486,7 +619,8 @@ workflows:
       vars:
         XCODE_PROJECT: "IPCoreMarketplace.xcodeproj"
         XCODE_SCHEME: "IPCoreMarketplace"
-        BUNDLE_ID: "com.jameswilliams.ipcoremarketplace"
+        BUNDLE_ID: "com.jrwtech.ipcoremarketplace"
+        APP_STORE_APPLE_ID: "6785705211"
       xcode: 26.4
       cocoapods: default
     scripts:
@@ -498,6 +632,19 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
+      - name: Set build number
+        script: |
+          cd ios-repo/apps/IPCoreMarketplace
+          TF=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          AS=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          MAX=0
+          for N in "$TF" "$AS"; do
+            case "$N" in ''|*[!0-9]*) N=0;; esac
+            [ "$N" -gt "$MAX" ] && MAX="$N"
+          done
+          NEXT=$((MAX + 1))
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $NEXT" IPCoreMarketplace/Info.plist
+          echo "Uploading build $NEXT"
       - name: Build IPA
         script: |
           cd ios-repo/apps/IPCoreMarketplace
@@ -524,7 +671,8 @@ workflows:
       vars:
         XCODE_PROJECT: "RocketForge.xcodeproj"
         XCODE_SCHEME: "RocketForge"
-        BUNDLE_ID: "com.jameswilliams.rocketforge"
+        BUNDLE_ID: "com.jrwtech.rocketforge"
+        APP_STORE_APPLE_ID: "6785700168"
       xcode: 26.4
       cocoapods: default
     scripts:
@@ -536,6 +684,19 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
+      - name: Set build number
+        script: |
+          cd ios-repo/apps/RocketForge
+          TF=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          AS=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          MAX=0
+          for N in "$TF" "$AS"; do
+            case "$N" in ''|*[!0-9]*) N=0;; esac
+            [ "$N" -gt "$MAX" ] && MAX="$N"
+          done
+          NEXT=$((MAX + 1))
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $NEXT" RocketForge/Info.plist
+          echo "Uploading build $NEXT"
       - name: Build IPA
         script: |
           cd ios-repo/apps/RocketForge
@@ -614,7 +775,8 @@ workflows:
       vars:
         XCODE_PROJECT: "ServerForge.xcodeproj"
         XCODE_SCHEME: "ServerForge"
-        BUNDLE_ID: "com.jameswilliams.serverforge"
+        BUNDLE_ID: "com.jrwtech.serverforge"
+        APP_STORE_APPLE_ID: "6785685165"
       xcode: 26.4
       cocoapods: default
     scripts:
@@ -626,6 +788,19 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
+      - name: Set build number
+        script: |
+          cd ios-repo/apps/ServerForge
+          TF=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          AS=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          MAX=0
+          for N in "$TF" "$AS"; do
+            case "$N" in ''|*[!0-9]*) N=0;; esac
+            [ "$N" -gt "$MAX" ] && MAX="$N"
+          done
+          NEXT=$((MAX + 1))
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $NEXT" ServerForge/Info.plist
+          echo "Uploading build $NEXT"
       - name: Build IPA
         script: |
           cd ios-repo/apps/ServerForge
@@ -652,7 +827,8 @@ workflows:
       vars:
         XCODE_PROJECT: "BitcoinClubQuest.xcodeproj"
         XCODE_SCHEME: "BitcoinClubQuest"
-        BUNDLE_ID: "com.jrwtech.bitcoinclubquest"
+        BUNDLE_ID: "com.jameswilliams.bitcoinclubquest"
+        APP_STORE_APPLE_ID: "6804801324"
       xcode: 26.4
       cocoapods: default
     scripts:
