@@ -515,8 +515,10 @@ workflows:
       groups:
         - appstore-credentials
       ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.jrwtech.luxuryhomeplans
+        provisioning_profiles:
+          - cm_luxuryhomeplans
+        certificates:
+          - RoboLeague iOS Distribution
       vars:
         XCODE_PROJECT: "LuxuryHomePlans.xcodeproj"
         XCODE_SCHEME: "LuxuryHomePlans"
