@@ -25,7 +25,7 @@
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeAreaLayoutGuide" id="Bcu-3y-fUS"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.07843" green="0.03922" blue="0.12157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rDr-d3-Btu" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="dKl-5e-6FE"/>
                             <constraint firstItem="rDr-d3-Btu" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="WIX-kN-Ubw"/>
