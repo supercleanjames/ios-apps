@@ -10,15 +10,8 @@ workflows:
         XCODE_PROJECT: "CreativeMusicNexus.xcodeproj"
         XCODE_SCHEME: "CreativeMusicNexus"
         BUNDLE_ID: "com.jameswilliams.creativemusic"
-      xcode: latest
+      xcode: 26.4
       cocoapods: default
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: main
-          include: true
-          source: true
     scripts:
       - name: Set up keychain
         script: keychain initialize
@@ -55,15 +48,8 @@ workflows:
         XCODE_PROJECT: "CryptoMineConnect.xcodeproj"
         XCODE_SCHEME: "CryptoMineConnect"
         BUNDLE_ID: "com.jameswilliams.cryptomineconnect"
-      xcode: latest
+      xcode: 26.4
       cocoapods: default
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: main
-          include: true
-          source: true
     scripts:
       - name: Set up keychain
         script: keychain initialize
@@ -100,15 +86,8 @@ workflows:
         XCODE_PROJECT: "AppleSentinel.xcodeproj"
         XCODE_SCHEME: "AppleSentinel"
         BUNDLE_ID: "com.jameswilliams.applesentinel"
-      xcode: latest
+      xcode: 26.4
       cocoapods: default
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: main
-          include: true
-          source: true
     scripts:
       - name: Set up keychain
         script: keychain initialize
@@ -145,15 +124,8 @@ workflows:
         XCODE_PROJECT: "WealthSageAI.xcodeproj"
         XCODE_SCHEME: "WealthSageAI"
         BUNDLE_ID: "com.jameswilliams.wealthsage"
-      xcode: latest
+      xcode: 26.4
       cocoapods: default
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: main
-          include: true
-          source: true
     scripts:
       - name: Set up keychain
         script: keychain initialize
@@ -190,15 +162,8 @@ workflows:
         XCODE_PROJECT: "IOTAIChipMarket.xcodeproj"
         XCODE_SCHEME: "IOTAIChipMarket"
         BUNDLE_ID: "com.jameswilliams.iotaichip"
-      xcode: latest
+      xcode: 26.4
       cocoapods: default
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: main
-          include: true
-          source: true
     scripts:
       - name: Set up keychain
         script: keychain initialize
@@ -235,15 +200,8 @@ workflows:
         XCODE_PROJECT: "GoodDoctorWellness.xcodeproj"
         XCODE_SCHEME: "GoodDoctorWellness"
         BUNDLE_ID: "com.jameswilliams.gooddoctor"
-      xcode: latest
+      xcode: 26.4
       cocoapods: default
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: main
-          include: true
-          source: true
     scripts:
       - name: Set up keychain
         script: keychain initialize
@@ -280,15 +238,8 @@ workflows:
         XCODE_PROJECT: "CoinBotTrade.xcodeproj"
         XCODE_SCHEME: "CoinBotTrade"
         BUNDLE_ID: "com.jameswilliams.coinbottrade"
-      xcode: latest
+      xcode: 26.4
       cocoapods: default
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: main
-          include: true
-          source: true
     scripts:
       - name: Set up keychain
         script: keychain initialize
@@ -325,15 +276,8 @@ workflows:
         XCODE_PROJECT: "CoinMintToken.xcodeproj"
         XCODE_SCHEME: "CoinMintToken"
         BUNDLE_ID: "com.jameswilliams.coinmint"
-      xcode: latest
+      xcode: 26.4
       cocoapods: default
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: main
-          include: true
-          source: true
     scripts:
       - name: Set up keychain
         script: keychain initialize
@@ -370,15 +314,8 @@ workflows:
         XCODE_PROJECT: "VehicleCatalog.xcodeproj"
         XCODE_SCHEME: "VehicleCatalog"
         BUNDLE_ID: "com.jameswilliams.vehiclecatalog"
-      xcode: latest
+      xcode: 26.4
       cocoapods: default
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: main
-          include: true
-          source: true
     scripts:
       - name: Set up keychain
         script: keychain initialize
@@ -415,15 +352,8 @@ workflows:
         XCODE_PROJECT: "FoodByteToken.xcodeproj"
         XCODE_SCHEME: "FoodByteToken"
         BUNDLE_ID: "com.jameswilliams.foodbyte"
-      xcode: latest
+      xcode: 26.4
       cocoapods: default
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: main
-          include: true
-          source: true
     scripts:
       - name: Set up keychain
         script: keychain initialize
@@ -459,8 +389,9 @@ workflows:
       vars:
         XCODE_PROJECT: "LuxuryHomePlans.xcodeproj"
         XCODE_SCHEME: "LuxuryHomePlans"
-        BUNDLE_ID: "com.jameswilliams.luxuryhomeplans"
-      xcode: latest
+        BUNDLE_ID: "com.jrwtech.luxuryhomeplans"
+        APP_STORE_APPLE_ID: "6785681579"
+      xcode: 26.4
       cocoapods: default
     triggering:
       events:
@@ -478,6 +409,19 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
+      - name: Set build number
+        script: |
+          cd ios-repo/apps/LuxuryHomePlans
+          TF=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          AS=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          MAX=0
+          for N in "$TF" "$AS"; do
+            case "$N" in ''|*[!0-9]*) N=0;; esac
+            [ "$N" -gt "$MAX" ] && MAX="$N"
+          done
+          NEXT=$((MAX + 1))
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $NEXT" LuxuryHomePlans/Info.plist
+          echo "Uploading build $NEXT"
       - name: Build IPA
         script: |
           cd ios-repo/apps/LuxuryHomePlans
@@ -505,15 +449,8 @@ workflows:
         XCODE_PROJECT: "AquacultureBlueprints.xcodeproj"
         XCODE_SCHEME: "AquacultureBlueprints"
         BUNDLE_ID: "com.jameswilliams.aquaculture"
-      xcode: latest
+      xcode: 26.4
       cocoapods: default
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: main
-          include: true
-          source: true
     scripts:
       - name: Set up keychain
         script: keychain initialize
@@ -550,15 +487,8 @@ workflows:
         XCODE_PROJECT: "IPCoreMarketplace.xcodeproj"
         XCODE_SCHEME: "IPCoreMarketplace"
         BUNDLE_ID: "com.jameswilliams.ipcoremarketplace"
-      xcode: latest
+      xcode: 26.4
       cocoapods: default
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: main
-          include: true
-          source: true
     scripts:
       - name: Set up keychain
         script: keychain initialize
@@ -595,15 +525,8 @@ workflows:
         XCODE_PROJECT: "RocketForge.xcodeproj"
         XCODE_SCHEME: "RocketForge"
         BUNDLE_ID: "com.jameswilliams.rocketforge"
-      xcode: latest
+      xcode: 26.4
       cocoapods: default
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: main
-          include: true
-          source: true
     scripts:
       - name: Set up keychain
         script: keychain initialize
@@ -639,16 +562,10 @@ workflows:
       vars:
         XCODE_PROJECT: "CarbonXToken.xcodeproj"
         XCODE_SCHEME: "CarbonXToken"
-        BUNDLE_ID: "com.jameswilliams.carbonx"
-      xcode: latest
+        BUNDLE_ID: "com.jrwtech.carbonxtoken"
+        APP_STORE_APPLE_ID: "6785697731"
+      xcode: 26.4
       cocoapods: default
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: main
-          include: true
-          source: true
     scripts:
       - name: Set up keychain
         script: keychain initialize
@@ -658,6 +575,19 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
+      - name: Set build number
+        script: |
+          cd ios-repo/apps/CarbonXToken
+          TF=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          AS=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          MAX=0
+          for N in "$TF" "$AS"; do
+            case "$N" in ''|*[!0-9]*) N=0;; esac
+            [ "$N" -gt "$MAX" ] && MAX="$N"
+          done
+          NEXT=$((MAX + 1))
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $NEXT" CarbonXToken/Info.plist
+          echo "Uploading build $NEXT"
       - name: Build IPA
         script: |
           cd ios-repo/apps/CarbonXToken
@@ -685,15 +615,8 @@ workflows:
         XCODE_PROJECT: "ServerForge.xcodeproj"
         XCODE_SCHEME: "ServerForge"
         BUNDLE_ID: "com.jameswilliams.serverforge"
-      xcode: latest
+      xcode: 26.4
       cocoapods: default
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: main
-          include: true
-          source: true
     scripts:
       - name: Set up keychain
         script: keychain initialize
@@ -730,7 +653,7 @@ workflows:
         XCODE_PROJECT: "BitcoinClubQuest.xcodeproj"
         XCODE_SCHEME: "BitcoinClubQuest"
         BUNDLE_ID: "com.jrwtech.bitcoinclubquest"
-      xcode: latest
+      xcode: 26.4
       cocoapods: default
     scripts:
       - name: Clone Bitcoin Club Quest repo
