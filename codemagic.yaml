@@ -1,4 +1,59 @@
 workflows:
+  luxury-home-plans:
+    name: Luxury Home Plans
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: Codemagic iOS Builds
+    environment:
+      groups:
+        - appstore-credentials
+      ios_signing:
+        provisioning_profiles:
+          - lhp_v2
+        certificates:
+          - RoboLeague iOS Distribution
+      vars:
+        XCODE_PROJECT: "LuxuryHomePlans.xcodeproj"
+        XCODE_SCHEME: "LuxuryHomePlans"
+        BUNDLE_ID: "com.jrwtech.luxuryhomeplans"
+        APP_STORE_APPLE_ID: "6785681579"
+      xcode: 26.4
+      cocoapods: default
+    scripts:
+      - name: Set build number
+        script: |
+          cd ios-repo/apps/LuxuryHomePlans
+          TF=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          AS=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
+          MAX=0
+          for N in "$TF" "$AS"; do
+            case "$N" in ''|*[!0-9]*) N=0;; esac
+            [ "$N" -gt "$MAX" ] && MAX="$N"
+          done
+          NEXT=$((MAX + 1))
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $NEXT" LuxuryHomePlans/Info.plist
+          echo "Uploading build $NEXT"
+      - name: Build IPA
+        script: |
+          cd ios-repo/apps/LuxuryHomePlans
+          xcode-project use-profiles
+          if ! xcode-project build-ipa --project "$XCODE_PROJECT" --scheme "$XCODE_SCHEME"; then
+            echo "===== xcodebuild errors ====="
+            grep -E "error:|warning: no rule|Undefined symbol|does not contain|cannot find" /tmp/xcodebuild_logs/*.log | tail -60 || true
+            echo "===== xcodebuild log tail ====="
+            tail -120 /tmp/xcodebuild_logs/*.log || true
+            exit 1
+          fi
+    artifacts:
+      - ios-repo/apps/LuxuryHomePlans/build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+        submit_to_app_store: false
+
   creative-music-nexus:
     name: Creative Music Nexus
     max_build_duration: 60
@@ -504,61 +559,6 @@ workflows:
         key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
         issuer_id: $APP_STORE_CONNECT_ISSUER_ID
         submit_to_testflight: true
-
-  luxury-home-plans:
-    name: Luxury Home Plans
-    max_build_duration: 60
-    instance_type: mac_mini_m2
-    integrations:
-      app_store_connect: Codemagic iOS Builds
-    environment:
-      groups:
-        - appstore-credentials
-      ios_signing:
-        provisioning_profiles:
-          - lhp_v2
-        certificates:
-          - RoboLeague iOS Distribution
-      vars:
-        XCODE_PROJECT: "LuxuryHomePlans.xcodeproj"
-        XCODE_SCHEME: "LuxuryHomePlans"
-        BUNDLE_ID: "com.jrwtech.luxuryhomeplans"
-        APP_STORE_APPLE_ID: "6785681579"
-      xcode: 26.4
-      cocoapods: default
-    scripts:
-      - name: Set build number
-        script: |
-          cd ios-repo/apps/LuxuryHomePlans
-          TF=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
-          AS=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo "")
-          MAX=0
-          for N in "$TF" "$AS"; do
-            case "$N" in ''|*[!0-9]*) N=0;; esac
-            [ "$N" -gt "$MAX" ] && MAX="$N"
-          done
-          NEXT=$((MAX + 1))
-          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $NEXT" LuxuryHomePlans/Info.plist
-          echo "Uploading build $NEXT"
-      - name: Build IPA
-        script: |
-          cd ios-repo/apps/LuxuryHomePlans
-          xcode-project use-profiles
-          if ! xcode-project build-ipa --project "$XCODE_PROJECT" --scheme "$XCODE_SCHEME"; then
-            echo "===== xcodebuild errors ====="
-            grep -E "error:|warning: no rule|Undefined symbol|does not contain|cannot find" /tmp/xcodebuild_logs/*.log | tail -60 || true
-            echo "===== xcodebuild log tail ====="
-            tail -120 /tmp/xcodebuild_logs/*.log || true
-            exit 1
-          fi
-    artifacts:
-      - ios-repo/apps/LuxuryHomePlans/build/ios/ipa/*.ipa
-      - /tmp/xcodebuild_logs/*.log
-    publishing:
-      app_store_connect:
-        auth: integration
-        submit_to_testflight: true
-        submit_to_app_store: false
 
   aquaculture-blueprints:
     name: Aquaculture Blueprints
