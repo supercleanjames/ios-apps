@@ -544,11 +544,16 @@ workflows:
         script: |
           cd ios-repo/apps/LuxuryHomePlans
           xcode-project use-profiles
-          xcode-project build-ipa \
-            --project "$XCODE_PROJECT" \
-            --scheme "$XCODE_SCHEME"
+          if ! xcode-project build-ipa --project "$XCODE_PROJECT" --scheme "$XCODE_SCHEME"; then
+            echo "===== xcodebuild errors ====="
+            grep -E "error:|warning: no rule|Undefined symbol|does not contain|cannot find" /tmp/xcodebuild_logs/*.log | tail -60 || true
+            echo "===== xcodebuild log tail ====="
+            tail -120 /tmp/xcodebuild_logs/*.log || true
+            exit 1
+          fi
     artifacts:
       - ios-repo/apps/LuxuryHomePlans/build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
     publishing:
       app_store_connect:
         auth: integration
