@@ -58,9 +58,16 @@ workflows:
     name: Creative Music Nexus
     max_build_duration: 60
     instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: Codemagic iOS Builds
     environment:
       groups:
         - appstore-credentials
+      ios_signing:
+        provisioning_profiles:
+          - cmn_v2
+        certificates:
+          - RoboLeague iOS Distribution
       vars:
         XCODE_PROJECT: "CreativeMusicNexus.xcodeproj"
         XCODE_SCHEME: "CreativeMusicNexus"
@@ -69,14 +76,6 @@ workflows:
       xcode: 26.4
       cocoapods: default
     scripts:
-      - name: Set up keychain
-        script: keychain initialize
-      - name: Fetch signing files
-        script: |
-          app-store-connect fetch-signing-files "$BUNDLE_ID" \
-            --type IOS_APP_STORE \
-            --create
-          keychain add-certificates
       - name: Set build number
         script: |
           cd ios-repo/apps/CreativeMusicNexus
@@ -94,17 +93,21 @@ workflows:
         script: |
           cd ios-repo/apps/CreativeMusicNexus
           xcode-project use-profiles
-          xcode-project build-ipa \
-            --project "$XCODE_PROJECT" \
-            --scheme "$XCODE_SCHEME"
+          if ! xcode-project build-ipa --project "$XCODE_PROJECT" --scheme "$XCODE_SCHEME"; then
+            echo "===== xcodebuild errors ====="
+            grep -E "error:|warning: no rule|Undefined symbol|does not contain|cannot find" /tmp/xcodebuild_logs/*.log | tail -60 || true
+            echo "===== xcodebuild log tail ====="
+            tail -120 /tmp/xcodebuild_logs/*.log || true
+            exit 1
+          fi
     artifacts:
       - ios-repo/apps/CreativeMusicNexus/build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
     publishing:
       app_store_connect:
-        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
-        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
-        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        auth: integration
         submit_to_testflight: true
+        submit_to_app_store: false
 
   crypto-mine-connect:
     name: CryptoMine Connect
@@ -162,9 +165,16 @@ workflows:
     name: Apple Sentinel Security
     max_build_duration: 60
     instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: Codemagic iOS Builds
     environment:
       groups:
         - appstore-credentials
+      ios_signing:
+        provisioning_profiles:
+          - sentinel_v2
+        certificates:
+          - RoboLeague iOS Distribution
       vars:
         XCODE_PROJECT: "AppleSentinel.xcodeproj"
         XCODE_SCHEME: "AppleSentinel"
@@ -173,14 +183,6 @@ workflows:
       xcode: 26.4
       cocoapods: default
     scripts:
-      - name: Set up keychain
-        script: keychain initialize
-      - name: Fetch signing files
-        script: |
-          app-store-connect fetch-signing-files "$BUNDLE_ID" \
-            --type IOS_APP_STORE \
-            --create
-          keychain add-certificates
       - name: Set build number
         script: |
           cd ios-repo/apps/AppleSentinel
@@ -198,17 +200,21 @@ workflows:
         script: |
           cd ios-repo/apps/AppleSentinel
           xcode-project use-profiles
-          xcode-project build-ipa \
-            --project "$XCODE_PROJECT" \
-            --scheme "$XCODE_SCHEME"
+          if ! xcode-project build-ipa --project "$XCODE_PROJECT" --scheme "$XCODE_SCHEME"; then
+            echo "===== xcodebuild errors ====="
+            grep -E "error:|warning: no rule|Undefined symbol|does not contain|cannot find" /tmp/xcodebuild_logs/*.log | tail -60 || true
+            echo "===== xcodebuild log tail ====="
+            tail -120 /tmp/xcodebuild_logs/*.log || true
+            exit 1
+          fi
     artifacts:
       - ios-repo/apps/AppleSentinel/build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
     publishing:
       app_store_connect:
-        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
-        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
-        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        auth: integration
         submit_to_testflight: true
+        submit_to_app_store: false
 
   wealth-sage-ai:
     name: WealthSage AI
@@ -266,9 +272,16 @@ workflows:
     name: IOT AI Chip Market
     max_build_duration: 60
     instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: Codemagic iOS Builds
     environment:
       groups:
         - appstore-credentials
+      ios_signing:
+        provisioning_profiles:
+          - aichip_v2
+        certificates:
+          - RoboLeague iOS Distribution
       vars:
         XCODE_PROJECT: "IOTAIChipMarket.xcodeproj"
         XCODE_SCHEME: "IOTAIChipMarket"
@@ -277,14 +290,6 @@ workflows:
       xcode: 26.4
       cocoapods: default
     scripts:
-      - name: Set up keychain
-        script: keychain initialize
-      - name: Fetch signing files
-        script: |
-          app-store-connect fetch-signing-files "$BUNDLE_ID" \
-            --type IOS_APP_STORE \
-            --create
-          keychain add-certificates
       - name: Set build number
         script: |
           cd ios-repo/apps/IOTAIChipMarket
@@ -302,17 +307,21 @@ workflows:
         script: |
           cd ios-repo/apps/IOTAIChipMarket
           xcode-project use-profiles
-          xcode-project build-ipa \
-            --project "$XCODE_PROJECT" \
-            --scheme "$XCODE_SCHEME"
+          if ! xcode-project build-ipa --project "$XCODE_PROJECT" --scheme "$XCODE_SCHEME"; then
+            echo "===== xcodebuild errors ====="
+            grep -E "error:|warning: no rule|Undefined symbol|does not contain|cannot find" /tmp/xcodebuild_logs/*.log | tail -60 || true
+            echo "===== xcodebuild log tail ====="
+            tail -120 /tmp/xcodebuild_logs/*.log || true
+            exit 1
+          fi
     artifacts:
       - ios-repo/apps/IOTAIChipMarket/build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
     publishing:
       app_store_connect:
-        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
-        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
-        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        auth: integration
         submit_to_testflight: true
+        submit_to_app_store: false
 
   good-doctor-wellness:
     name: GoodDoctor Wellness
@@ -564,9 +573,16 @@ workflows:
     name: Aquaculture Blueprints
     max_build_duration: 60
     instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: Codemagic iOS Builds
     environment:
       groups:
         - appstore-credentials
+      ios_signing:
+        provisioning_profiles:
+          - aqua_v2
+        certificates:
+          - RoboLeague iOS Distribution
       vars:
         XCODE_PROJECT: "AquacultureBlueprints.xcodeproj"
         XCODE_SCHEME: "AquacultureBlueprints"
@@ -575,14 +591,6 @@ workflows:
       xcode: 26.4
       cocoapods: default
     scripts:
-      - name: Set up keychain
-        script: keychain initialize
-      - name: Fetch signing files
-        script: |
-          app-store-connect fetch-signing-files "$BUNDLE_ID" \
-            --type IOS_APP_STORE \
-            --create
-          keychain add-certificates
       - name: Set build number
         script: |
           cd ios-repo/apps/AquacultureBlueprints
@@ -600,25 +608,36 @@ workflows:
         script: |
           cd ios-repo/apps/AquacultureBlueprints
           xcode-project use-profiles
-          xcode-project build-ipa \
-            --project "$XCODE_PROJECT" \
-            --scheme "$XCODE_SCHEME"
+          if ! xcode-project build-ipa --project "$XCODE_PROJECT" --scheme "$XCODE_SCHEME"; then
+            echo "===== xcodebuild errors ====="
+            grep -E "error:|warning: no rule|Undefined symbol|does not contain|cannot find" /tmp/xcodebuild_logs/*.log | tail -60 || true
+            echo "===== xcodebuild log tail ====="
+            tail -120 /tmp/xcodebuild_logs/*.log || true
+            exit 1
+          fi
     artifacts:
       - ios-repo/apps/AquacultureBlueprints/build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
     publishing:
       app_store_connect:
-        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
-        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
-        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        auth: integration
         submit_to_testflight: true
+        submit_to_app_store: false
 
   ip-core-marketplace:
     name: IP Core Marketplace
     max_build_duration: 60
     instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: Codemagic iOS Builds
     environment:
       groups:
         - appstore-credentials
+      ios_signing:
+        provisioning_profiles:
+          - ipcore_v2
+        certificates:
+          - RoboLeague iOS Distribution
       vars:
         XCODE_PROJECT: "IPCoreMarketplace.xcodeproj"
         XCODE_SCHEME: "IPCoreMarketplace"
@@ -627,14 +646,6 @@ workflows:
       xcode: 26.4
       cocoapods: default
     scripts:
-      - name: Set up keychain
-        script: keychain initialize
-      - name: Fetch signing files
-        script: |
-          app-store-connect fetch-signing-files "$BUNDLE_ID" \
-            --type IOS_APP_STORE \
-            --create
-          keychain add-certificates
       - name: Set build number
         script: |
           cd ios-repo/apps/IPCoreMarketplace
@@ -652,25 +663,36 @@ workflows:
         script: |
           cd ios-repo/apps/IPCoreMarketplace
           xcode-project use-profiles
-          xcode-project build-ipa \
-            --project "$XCODE_PROJECT" \
-            --scheme "$XCODE_SCHEME"
+          if ! xcode-project build-ipa --project "$XCODE_PROJECT" --scheme "$XCODE_SCHEME"; then
+            echo "===== xcodebuild errors ====="
+            grep -E "error:|warning: no rule|Undefined symbol|does not contain|cannot find" /tmp/xcodebuild_logs/*.log | tail -60 || true
+            echo "===== xcodebuild log tail ====="
+            tail -120 /tmp/xcodebuild_logs/*.log || true
+            exit 1
+          fi
     artifacts:
       - ios-repo/apps/IPCoreMarketplace/build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
     publishing:
       app_store_connect:
-        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
-        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
-        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        auth: integration
         submit_to_testflight: true
+        submit_to_app_store: false
 
   rocketforge:
     name: RocketForge
     max_build_duration: 60
     instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: Codemagic iOS Builds
     environment:
       groups:
         - appstore-credentials
+      ios_signing:
+        provisioning_profiles:
+          - rocket_v2
+        certificates:
+          - RoboLeague iOS Distribution
       vars:
         XCODE_PROJECT: "RocketForge.xcodeproj"
         XCODE_SCHEME: "RocketForge"
@@ -679,14 +701,6 @@ workflows:
       xcode: 26.4
       cocoapods: default
     scripts:
-      - name: Set up keychain
-        script: keychain initialize
-      - name: Fetch signing files
-        script: |
-          app-store-connect fetch-signing-files "$BUNDLE_ID" \
-            --type IOS_APP_STORE \
-            --create
-          keychain add-certificates
       - name: Set build number
         script: |
           cd ios-repo/apps/RocketForge
@@ -704,17 +718,21 @@ workflows:
         script: |
           cd ios-repo/apps/RocketForge
           xcode-project use-profiles
-          xcode-project build-ipa \
-            --project "$XCODE_PROJECT" \
-            --scheme "$XCODE_SCHEME"
+          if ! xcode-project build-ipa --project "$XCODE_PROJECT" --scheme "$XCODE_SCHEME"; then
+            echo "===== xcodebuild errors ====="
+            grep -E "error:|warning: no rule|Undefined symbol|does not contain|cannot find" /tmp/xcodebuild_logs/*.log | tail -60 || true
+            echo "===== xcodebuild log tail ====="
+            tail -120 /tmp/xcodebuild_logs/*.log || true
+            exit 1
+          fi
     artifacts:
       - ios-repo/apps/RocketForge/build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
     publishing:
       app_store_connect:
-        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
-        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
-        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        auth: integration
         submit_to_testflight: true
+        submit_to_app_store: false
 
   carbonx-token:
     name: CarbonX Token
@@ -772,9 +790,16 @@ workflows:
     name: ServerForge
     max_build_duration: 60
     instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: Codemagic iOS Builds
     environment:
       groups:
         - appstore-credentials
+      ios_signing:
+        provisioning_profiles:
+          - server_v2
+        certificates:
+          - RoboLeague iOS Distribution
       vars:
         XCODE_PROJECT: "ServerForge.xcodeproj"
         XCODE_SCHEME: "ServerForge"
@@ -783,14 +808,6 @@ workflows:
       xcode: 26.4
       cocoapods: default
     scripts:
-      - name: Set up keychain
-        script: keychain initialize
-      - name: Fetch signing files
-        script: |
-          app-store-connect fetch-signing-files "$BUNDLE_ID" \
-            --type IOS_APP_STORE \
-            --create
-          keychain add-certificates
       - name: Set build number
         script: |
           cd ios-repo/apps/ServerForge
@@ -808,17 +825,21 @@ workflows:
         script: |
           cd ios-repo/apps/ServerForge
           xcode-project use-profiles
-          xcode-project build-ipa \
-            --project "$XCODE_PROJECT" \
-            --scheme "$XCODE_SCHEME"
+          if ! xcode-project build-ipa --project "$XCODE_PROJECT" --scheme "$XCODE_SCHEME"; then
+            echo "===== xcodebuild errors ====="
+            grep -E "error:|warning: no rule|Undefined symbol|does not contain|cannot find" /tmp/xcodebuild_logs/*.log | tail -60 || true
+            echo "===== xcodebuild log tail ====="
+            tail -120 /tmp/xcodebuild_logs/*.log || true
+            exit 1
+          fi
     artifacts:
       - ios-repo/apps/ServerForge/build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
     publishing:
       app_store_connect:
-        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
-        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
-        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        auth: integration
         submit_to_testflight: true
+        submit_to_app_store: false
 
   bitcoin-club-quest:
     name: Bitcoin Club Quest
